@@ -1,14 +1,58 @@
 /* App.css */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #000; /* Change background color to black */
-  color: #fff; /* Change text color to white */
+  background-image: url('assets/Darth.jpg');
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  
 }
+
+/* App.css */
+/* App.css */
+.parallax-container {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto; /* Change to 'auto' to enable scrolling */
+  height: 100vh;
+}
+
+.parallax {
+  background-image: url('assets/Darth.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 200%;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Hide scrollbar for webkit browsers */
+.parallax-container::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar width */
+  background: transparent; /* Make scrollbar track transparent */
+}
+
+/* Hide scrollbar for Firefox */
+.parallax-container {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Optional: You can style scrollbar thumb and track */
+.parallax-container::-webkit-scrollbar-thumb {
+  background: transparent; /* Make scrollbar thumb transparent */
+}
+
+.parallax-container::-webkit-scrollbar-track {
+  background: transparent; /* Make scrollbar track transparent */
+}
+
 
 .container {
   max-width: 1200px;

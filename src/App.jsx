@@ -67,6 +67,12 @@ function App() {
     setSelectedCharacter(character);
   };
 
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.scrollY;
+    let parallax = document.querySelector('.parallax');
+    parallax.style.transform = 'translateY(-' + scrollTop / 2 + 'px)';
+  });
+
   const uniqueCharacters = new Set();
 
   const filteredCharacters = films
@@ -84,50 +90,56 @@ function App() {
 
   return (
     <>
-      <h1>Star Wars</h1>
-      <input
-  type="text"
-  placeholder="Search characters..."
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-/>
+    <div class="parallax-container">
+     <div class="parallax">
+        <h1>Star Wars</h1>
+        <input
+          type="text"
+          placeholder="Search characters..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
 
-{filteredCharacters.length > 0 && searchQuery && (
-  <ul className="character-list">
-    {filteredCharacters.map((character, index) => (
-      <li
-        key={index}
-        onClick={() => handleCharacterClick(character)}
-        className="character-link"
-      >
-        <h4>{character.name}</h4>
-      </li>
-    ))}
-  </ul>
-)}
-
-{filteredCharacters.length === 0 && searchQuery && (
-  <p>No characters found</p>
-)}
-      {films.map((film, filmIndex) => (
-        <div key={filmIndex}>
-          <h2>{film.title}</h2>
-          <h3>{film.director}</h3>
-          <ul style={{ display: "grid" }}>
-            {film.characterConnection.characters.map(
-              (character, characterIndex) => (
-                <li
-                  key={characterIndex}
-                  onClick={() => handleCharacterClick(character)}
-                  className="character-link"
-                >
-                  <h4>{character.name}</h4>
-                </li>
-              )
-            )}
+        {filteredCharacters.length > 0 && searchQuery && (
+          <ul className="character-list">
+            {filteredCharacters.map((character, index) => (
+              <li
+                key={index}
+                onClick={() => handleCharacterClick(character)}
+                className="character-link"
+              >
+                <h4>{character.name}</h4>
+              </li>
+            ))}
           </ul>
-        </div>
-      ))}
+        )}
+
+        {filteredCharacters.length === 0 && searchQuery && (
+          <p>No characters found</p>
+        )}
+        
+        {films.map((film, filmIndex) => (
+          <div key={filmIndex}>
+            <h2>{film.title}</h2>
+            <h3>{film.director}</h3>
+            <ul style={{ display: "grid" }}>
+              {film.characterConnection.characters.map(
+                (character, characterIndex) => (
+                  <li
+                    key={characterIndex}
+                    onClick={() => handleCharacterClick(character)}
+                    className="character-link"
+                  >
+                    <h4>{character.name}</h4>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        ))}
+  </div>
+</div>
+
       
 
 
