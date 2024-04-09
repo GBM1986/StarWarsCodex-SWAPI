@@ -1,0 +1,1 @@
+# StarWarsCodex-SWAPI
